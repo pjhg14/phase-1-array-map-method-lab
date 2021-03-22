@@ -11,6 +11,29 @@ const tutorials = [
   'what is JSONP?'
 ];
 
+
 const titleCased = () => {
+  titleFix()
+  
   return tutorials
+}
+
+function titleFix() {
+  let newTurorials = []
+  tutorials.forEach(tutorial => {
+    let titleArray = tutorial.split(" ").map(title => {
+      return title.substr(0,1).toUpperCase() + title.substr(1)
+    })
+
+    let newTitle = ""
+    titleArray.forEach(word => {
+      newTitle = newTitle + word + " "
+    })
+    
+    newTurorials.push(newTitle.trim())
+  })
+
+  newTurorials.forEach((fixed, index) => {
+    tutorials[index] = fixed
+  })
 }
